@@ -308,12 +308,211 @@
       transform: translateY(0);
     }
 
+    /* CERTIFICATION SECTION STYLES */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .certification-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(124,58,237,0.1);
+      border-radius: 16px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(3,7,23,0.6);
+    }
+
+    .certification-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple-600), var(--blue-500));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .certification-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124,58,237,0.3);
+      box-shadow: 0 20px 50px rgba(124,58,237,0.12);
+    }
+
+    .certification-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .certification-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: var(--purple-500);
+      border: 2px solid rgba(124,58,237,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .certification-card:hover .certification-badge {
+      background: rgba(124,58,237,0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(124,58,237,0.3);
+    }
+
+    .certification-content {
+      flex-grow: 1;
+    }
+
+    .certification-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .certification-issuer, .certification-date {
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+    }
+
+    .certification-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .skill-tag {
+      background: rgba(124,58,237,0.1);
+      color: var(--purple-400);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(124,58,237,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(124,58,237,0.2);
+      transform: translateY(-2px);
+    }
+
+    .certification-actions {
+      margin-top: auto;
+    }
+
+    .view-cert-btn {
+      width: 100%;
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: var(--purple-400);
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .view-cert-btn:hover {
+      background: rgba(124,58,237,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(124,58,237,0.2);
+    }
+
+    /* Certification Filter Buttons */
+    .cert-filter-btn {
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 25px;
+      padding: 12px 24px;
+      color: var(--purple-400);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .cert-filter-btn.active {
+      background: rgba(124,58,237,0.3);
+      border-color: var(--purple-500);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(124,58,237,0.2);
+    }
+
+    .cert-filter-btn:hover {
+      background: rgba(124,58,237,0.2);
+      transform: translateY(-1px);
+    }
+
+    /* Certification Modal Styles */
+    .cert-modal-content {
+      line-height: 1.6;
+    }
+
+    .cert-modal-content h4 {
+      color: var(--purple-400);
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .cert-modal-content ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .cert-modal-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Animation for certification cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .certification-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    /* Stagger animation for cards */
+    .certifications-grid .certification-card:nth-child(1) { animation-delay: 0.1s; }
+    .certifications-grid .certification-card:nth-child(2) { animation-delay: 0.2s; }
+    .certifications-grid .certification-card:nth-child(3) { animation-delay: 0.3s; }
+    .certifications-grid .certification-card:nth-child(4) { animation-delay: 0.4s; }
+    .certifications-grid .certification-card:nth-child(5) { animation-delay: 0.5s; }
+    .certifications-grid .certification-card:nth-child(6) { animation-delay: 0.6s; }
+
     /* responsive tweaks */
     @media (max-width: 768px){
       header { padding-left: 12px; padding-right: 12px; }
       .accent-underline{ width: 44px; }
       .profile-frame { width: 220px; height: 220px; margin: 0 auto; }
       .subtitle { font-size: 1.05rem; }
+      .certifications-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* footer */
@@ -358,6 +557,7 @@
           <li><a href="#skills" class="nav-modern">Skills</a></li>
           <li><a href="#projects" class="nav-modern">Projects</a></li>
           <li><a href="#services" class="nav-modern">Services</a></li>
+          <li><a href="#certifications" class="nav-modern">Certifications</a></li>
           <li><a href="#contact" class="nav-modern">Contact</a></li>
         </ul>
 
@@ -375,6 +575,7 @@
       <a href="#skills" class="block nav-modern-mobile">Skills</a>
       <a href="#projects" class="block nav-modern-mobile">Projects</a>
       <a href="#services" class="block nav-modern-mobile">Services</a>
+      <a href="#certifications" class="block nav-modern-mobile">Certifications</a>
       <a href="#contact" class="block nav-modern-mobile">Contact</a>
     </div>
   </header>
@@ -395,7 +596,7 @@
           <span id="subtitle" class="subtitle" aria-hidden="true">AI & ML Engineer</span>
 
           <div class="text-slate-300 max-w-xl" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
-            <p>I’m an AI & Machine Learning Engineer specializing in designing, training, and deploying intelligent systems — from NLP and Human Activity Recognition to full-stack AI applications using Flask and React. I build innovative AI & ML solutions that transform real-world challenges into intelligent, data-driven outcomes.</p>
+            <p>I'm an AI & Machine Learning Engineer specializing in designing, training, and deploying intelligent systems — from NLP and Human Activity Recognition to full-stack AI applications using Flask and React. I build innovative AI & ML solutions that transform real-world challenges into intelligent, data-driven outcomes.</p>
           </div>
 
           <div class="flex items-center gap-4 mt-4" data-aos="fade-up" data-aos-duration="900" data-aos-delay="350">
@@ -431,7 +632,7 @@
       <div class="text-center mb-8">
         <h2 class="text-2xl section-title">About Me</h2>
         <div class="accent-underline mx-auto"></div>
-        <p class="mt-4 text-slate-300">I design and deliver intelligent, production-ready AI systems — from data preprocessing to model training, evaluation, and deployment. I’m passionate about transforming complex data into smart, impactful solutions that drive real value for people and businesses.</p>
+        <p class="mt-4 text-slate-300">I design and deliver intelligent, production-ready AI systems — from data preprocessing to model training, evaluation, and deployment. I'm passionate about transforming complex data into smart, impactful solutions that drive real value for people and businesses.</p>
       </div>
 
       <!-- WHAT I DO & TOOLS -->
@@ -586,26 +787,25 @@
         </article>
 
         <!-- Project 2 -->
-<article class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700 shadow-xl backdrop-blur-sm hover:scale-[1.03] transition-transform duration-300 project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
-  <div class="flex justify-between items-start">
-    <h3 class="text-xl font-semibold text-white flex items-center gap-2">
-      <i class="fa-solid fa-heart-pulse text-pink-400"></i> EHAIDP – Diabetes Prediction
-    </h3>
-    <span class="text-xs text-slate-400">2025</span>
-  </div>
-  <p class="mt-3 text-slate-300 text-sm leading-relaxed">Designed an end-to-end hybrid AI framework (EHAIDP) that predicts diabetes risk using ensemble ML models. Integrated preprocessing, feature engineering, and model explainability in a Flask web interface.</p>
-  <div class="mt-5 flex items-center gap-3">
-    <a href="https://diabetes-prediction-app-d7kv.onrender.com/" class="text-sm py-2 px-4 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90">View</a>
-    <a href="#" class="text-sm py-2 px-4 rounded-md border border-purple-600 text-purple-400 hover:bg-purple-600/10">Code</a>
-  </div>
-  <div class="overlay p-6">
-    <div class="text-center">
-      <h4 class="text-white text-lg font-semibold">EHAIDP Framework</h4>
-      <p class="text-slate-200 mt-2 text-sm">Ensemble models + explainability + Flask UI.</p>
-    </div>
-  </div>
-</article>
-
+        <article class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700 shadow-xl backdrop-blur-sm hover:scale-[1.03] transition-transform duration-300 project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
+          <div class="flex justify-between items-start">
+            <h3 class="text-xl font-semibold text-white flex items-center gap-2">
+              <i class="fa-solid fa-heart-pulse text-pink-400"></i> EHAIDP – Diabetes Prediction
+            </h3>
+            <span class="text-xs text-slate-400">2025</span>
+          </div>
+          <p class="mt-3 text-slate-300 text-sm leading-relaxed">Designed an end-to-end hybrid AI framework (EHAIDP) that predicts diabetes risk using ensemble ML models. Integrated preprocessing, feature engineering, and model explainability in a Flask web interface.</p>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="#" class="text-sm py-2 px-4 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90">View</a>
+            <a href="#" class="text-sm py-2 px-4 rounded-md border border-purple-600 text-purple-400 hover:bg-purple-600/10">Code</a>
+          </div>
+          <div class="overlay p-6">
+            <div class="text-center">
+              <h4 class="text-white text-lg font-semibold">EHAIDP Framework</h4>
+              <p class="text-slate-200 mt-2 text-sm">Ensemble models + explainability + Flask UI.</p>
+            </div>
+          </div>
+        </article>
 
         <!-- Project 3 -->
         <article class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700 shadow-xl backdrop-blur-sm hover:scale-[1.03] transition-transform duration-300 project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="220">
@@ -653,12 +853,229 @@
       </div>
     </section>
 
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="max-w-6xl mx-auto px-6 md:px-12 py-16" data-aos="fade-up" data-aos-duration="900">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white tracking-wide">Certifications & Achievements</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto mt-3 mb-4 rounded"></div>
+        <p class="text-slate-300 max-w-2xl mx-auto text-sm md:text-base">Professional credentials and accomplishments that validate my expertise in AI, machine learning, and technology.</p>
+      </div>
+
+      <!-- Certification Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button class="cert-filter-btn active" data-filter="all">
+          <i class="fa-solid fa-layer-group mr-2"></i>All Certifications
+        </button>
+        <button class="cert-filter-btn" data-filter="ai">
+          <i class="fa-solid fa-robot mr-2"></i>AI & ML
+        </button>
+        <button class="cert-filter-btn" data-filter="tech">
+          <i class="fa-solid fa-code mr-2"></i>Technology
+        </button>
+        <button class="cert-filter-btn" data-filter="data">
+          <i class="fa-solid fa-database mr-2"></i>Data Science
+        </button>
+      </div>
+
+      <!-- Certifications Grid -->
+      <div class="certifications-grid">
+        <!-- Certification 1 -->
+        <div class="certification-card" data-category="ai" data-aos="zoom-in" data-aos-duration="700">
+          <div class="certification-badge">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div class="certification-content">
+            <h3 class="text-xl font-semibold text-white mb-2">Machine Learning Specialization</h3>
+            <p class="text-slate-300 mb-3">Deep Learning.AI</p>
+            <div class="certification-meta">
+              <span class="certification-issuer">
+                <i class="fa-solid fa-university mr-1"></i>DeepLearning.AI
+              </span>
+              <span class="certification-date">
+                <i class="fa-solid fa-calendar mr-1"></i>2023
+              </span>
+            </div>
+            <div class="certification-skills">
+              <span class="skill-tag">Neural Networks</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">Computer Vision</span>
+            </div>
+          </div>
+          <div class="certification-actions">
+            <button class="view-cert-btn" data-cert="cert1">
+              <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+            </button>
+          </div>
+        </div>
+
+        <!-- Certification 2 -->
+        <div class="certification-card" data-category="data" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+          <div class="certification-badge">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="certification-content">
+            <h3 class="text-xl font-semibold text-white mb-2">Data Science Professional</h3>
+            <p class="text-slate-300 mb-3">IBM Data Science</p>
+            <div class="certification-meta">
+              <span class="certification-issuer">
+                <i class="fa-solid fa-university mr-1"></i>IBM
+              </span>
+              <span class="certification-date">
+                <i class="fa-solid fa-calendar mr-1"></i>2022
+              </span>
+            </div>
+            <div class="certification-skills">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Data Visualization</span>
+              <span class="skill-tag">Statistical Analysis</span>
+            </div>
+          </div>
+          <div class="certification-actions">
+            <button class="view-cert-btn" data-cert="cert2">
+              <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+            </button>
+          </div>
+        </div>
+
+        <!-- Certification 3 -->
+        <div class="certification-card" data-category="tech" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
+          <div class="certification-badge">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+          <div class="certification-content">
+            <h3 class="text-xl font-semibold text-white mb-2">AWS Cloud Practitioner</h3>
+            <p class="text-slate-300 mb-3">Amazon Web Services</p>
+            <div class="certification-meta">
+              <span class="certification-issuer">
+                <i class="fa-solid fa-university mr-1"></i>AWS
+              </span>
+              <span class="certification-date">
+                <i class="fa-solid fa-calendar mr-1"></i>2022
+              </span>
+            </div>
+            <div class="certification-skills">
+              <span class="skill-tag">Cloud Computing</span>
+              <span class="skill-tag">AWS Services</span>
+              <span class="skill-tag">Infrastructure</span>
+            </div>
+          </div>
+          <div class="certification-actions">
+            <button class="view-cert-btn" data-cert="cert3">
+              <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+            </button>
+          </div>
+        </div>
+
+       <!-- Certification 4 -->
+<div class="certification-card" data-category="ai" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
+  <div class="certification-badge">
+    <i class="fa-solid fa-language"></i>
+  </div>
+  <div class="certification-content">
+    <h3 class="text-xl font-semibold text-white mb-2">Natural Language Processing</h3>
+    <p class="text-slate-300 mb-3">Advanced NLP Techniques</p>
+    <div class="certification-meta">
+      <span class="certification-issuer">
+        <i class="fa-solid fa-university mr-1"></i>Coursera
+      </span>
+      <span class="certification-date">
+        <i class="fa-solid fa-calendar mr-1"></i>2025
+      </span>
+    </div>
+    <div class="certification-skills">
+      <span class="skill-tag">Transformers</span>
+      <span class="skill-tag">BERT</span>
+      <span class="skill-tag">Text Classification</span>
+    </div>
+  </div>
+  <div class="certification-actions">
+    <a href="https://coursera.org/share/c1b5ca0c7271f1e7bbee685a0acfe6ae" target="_blank" class="view-cert-btn">
+      <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+    </a>
+  </div>
+</div>
+
+        <!-- Certification 5 -->
+        <div class="certification-card" data-category="data" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
+          <div class="certification-badge">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div class="certification-content">
+            <h3 class="text-xl font-semibold text-white mb-2">SQL for Data Science</h3>
+            <p class="text-slate-300 mb-3">University of California</p>
+            <div class="certification-meta">
+              <span class="certification-issuer">
+                <i class="fa-solid fa-university mr-1"></i>UC Davis
+              </span>
+              <span class="certification-date">
+                <i class="fa-solid fa-calendar mr-1"></i>2021
+              </span>
+            </div>
+            <div class="certification-skills">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Data Querying</span>
+              <span class="skill-tag">Database Design</span>
+            </div>
+          </div>
+          <div class="certification-actions">
+            <button class="view-cert-btn" data-cert="cert5">
+              <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+            </button>
+          </div>
+        </div>
+
+        <!-- Certification 6 -->
+        <div class="certification-card" data-category="tech" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="500">
+          <div class="certification-badge">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <div class="certification-content">
+            <h3 class="text-xl font-semibold text-white mb-2">Full Stack Development</h3>
+            <p class="text-slate-300 mb-3">Meta Front-End Developer</p>
+            <div class="certification-meta">
+              <span class="certification-issuer">
+                <i class="fa-solid fa-university mr-1"></i>Meta
+              </span>
+              <span class="certification-date">
+                <i class="fa-solid fa-calendar mr-1"></i>2022
+              </span>
+            </div>
+            <div class="certification-skills">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">MongoDB</span>
+            </div>
+          </div>
+          <div class="certification-actions">
+            <button class="view-cert-btn" data-cert="cert6">
+              <i class="fa-solid fa-external-link-alt mr-1"></i>View Credential
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certification Modal -->
+      <div id="certModal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-4">
+        <div class="glass-panel max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto">
+          <div class="flex justify-between items-center mb-4">
+            <h3 id="modalTitle" class="text-2xl font-bold text-white">Certification Details</h3>
+            <button id="closeModal" class="text-slate-300 hover:text-white text-xl">
+              <i class="fa-solid fa-times"></i>
+            </button>
+          </div>
+          <div id="modalContent" class="text-slate-300">
+            <!-- Modal content will be dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto px-6 md:px-0 py-16" data-aos="fade-up" data-aos-duration="900">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-semibold text-white mb-3">Get in Touch</h2>
         <div class="accent-underline mx-auto"></div>
-        <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Let’s collaborate on something impactful! Whether you have a project idea, job opportunity, or just want to connect — I’d love to hear from you.</p>
+        <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Let's collaborate on something impactful! Whether you have a project idea, job opportunity, or just want to connect — I'd love to hear from you.</p>
       </div>
 
       <form class="max-w-2xl mx-auto grid grid-cols-1 gap-4" action="mailto:zaakiabdirahman@gmail.com" method="post" enctype="text/plain">
@@ -685,7 +1102,7 @@
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto px-6 md:px-12 py-8 text-center">
       <div class="mb-3 text-slate-400">© 2025 Zakariye — AI & ML Engineer</div>
-      
+      <div class="text-sm text-slate-500">Built with ❤️ · Tailwind · AOS</div>
     </footer>
   </main>
 
@@ -698,7 +1115,7 @@
       const el = document.getElementById('typed');
       const cursor = document.getElementById('cursor');
       const subtitle = document.getElementById('subtitle');
-      const text = "Hi — I’m Zakariye Abdirahman";
+      const text = "Hi — I'm Zakariye Abdirahman";
       const speed = 36; // ms per char (adjust)
       let i = 0;
 
@@ -888,6 +1305,182 @@
     }
     window.addEventListener('scroll', animateProg);
     window.addEventListener('load', animateProg);
+
+    /* ===== CERTIFICATION SECTION FUNCTIONALITY ===== */
+    document.addEventListener('DOMContentLoaded', function() {
+      const certificationTabs = document.querySelectorAll('.cert-filter-btn');
+      const certificationCards = document.querySelectorAll('.certification-card');
+      const viewCertButtons = document.querySelectorAll('.view-cert-btn');
+      const certModal = document.getElementById('certModal');
+      const closeModal = document.getElementById('closeModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalContent = document.getElementById('modalContent');
+
+      // Certification filter functionality
+      certificationTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          // Update active tab
+          certificationTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter certification cards
+          certificationCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Certification modal functionality
+      viewCertButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const certId = this.getAttribute('data-cert');
+          showCertificationDetails(certId);
+        });
+      });
+
+      // Close modal
+      closeModal.addEventListener('click', function() {
+        certModal.classList.add('hidden');
+      });
+
+      // Close modal when clicking outside
+      certModal.addEventListener('click', function(e) {
+        if (e.target === certModal) {
+          certModal.classList.add('hidden');
+        }
+      });
+
+      // Function to show certification details in modal
+      function showCertificationDetails(certId) {
+        // In a real implementation, you would fetch this data from a database or API
+        const certData = {
+          cert1: {
+            title: "Machine Learning Specialization - DeepLearning.AI",
+            issuer: "DeepLearning.AI",
+            date: "October 2023",
+            skills: ["Neural Networks", "TensorFlow", "Computer Vision", "Natural Language Processing"],
+            description: "This specialization provides a comprehensive understanding of deep learning, from foundational concepts to advanced applications in computer vision and natural language processing.",
+            highlights: [
+              "Built and trained deep neural networks for various applications",
+              "Implemented convolutional networks for image recognition tasks",
+              "Developed sequence models for natural language processing",
+              "Applied best practices for machine learning projects"
+            ],
+            credentialUrl: "#"
+          },
+          cert2: {
+            title: "Data Science Professional Certification - IBM",
+            issuer: "IBM",
+            date: "June 2022",
+            skills: ["Python", "Data Visualization", "Statistical Analysis", "Machine Learning"],
+            description: "Professional certification covering the full data science lifecycle, from data collection and cleaning to analysis and visualization.",
+            highlights: [
+              "Applied statistical analysis to real-world datasets",
+              "Created interactive data visualizations",
+              "Built machine learning models for prediction tasks",
+              "Communicated data insights effectively"
+            ],
+            credentialUrl: "#"
+          },
+          cert3: {
+            title: "AWS Cloud Practitioner - Amazon Web Services",
+            issuer: "Amazon Web Services",
+            date: "March 2022",
+            skills: ["Cloud Computing", "AWS Services", "Infrastructure", "Security"],
+            description: "Certification demonstrating foundational knowledge of AWS cloud services, architecture, security, and pricing.",
+            highlights: [
+              "Understanding of AWS core services and use cases",
+              "Knowledge of AWS security and compliance",
+              "Understanding of AWS pricing and support models",
+              "Ability to identify appropriate AWS services for different scenarios"
+            ],
+            credentialUrl: "#"
+          },
+         cert4: {
+  title: "Natural Language Processing - Advanced Techniques",
+  issuer: "Coursera",
+  date: "2023",
+  skills: ["Transformers", "BERT", "Text Classification", "Sentiment Analysis"],
+  description: "Advanced course covering modern NLP techniques including transformer architectures and state-of-the-art language models.",
+  highlights: [
+    "Implemented transformer models for various NLP tasks",
+    "Fine-tuned BERT for specific domain applications",
+    "Built text classification and sentiment analysis systems",
+    "Applied attention mechanisms in sequence models"
+  ],
+  credentialUrl: "https://coursera.org/share/c1b5ca0c7271f1e7bbee685a0acfe6ae"
+},
+          cert5: {
+            title: "SQL for Data Science - University of California",
+            issuer: "UC Davis",
+            date: "August 2021",
+            skills: ["SQL", "Data Querying", "Database Design", "Data Analysis"],
+            description: "Comprehensive course covering SQL fundamentals and advanced techniques for data science applications.",
+            highlights: [
+              "Mastered complex SQL queries and subqueries",
+              "Designed and optimized database schemas",
+              "Performed data analysis using SQL window functions",
+              "Integrated SQL with data science workflows"
+            ],
+            credentialUrl: "#"
+          },
+          cert6: {
+            title: "Full Stack Development - Meta Front-End Developer",
+            issuer: "Meta",
+            date: "May 2022",
+            skills: ["React", "Node.js", "MongoDB", "Express.js"],
+            description: "Comprehensive training in full-stack web development, covering front-end and back-end technologies, databases, and deployment.",
+            highlights: [
+              "Developed responsive web applications using React",
+              "Built RESTful APIs with Node.js and Express",
+              "Implemented database solutions with MongoDB",
+              "Deployed applications to cloud platforms"
+            ],
+            credentialUrl: "#"
+          }
+        };
+
+        const cert = certData[certId];
+        if (!cert) return;
+
+        modalTitle.textContent = cert.title;
+        
+        modalContent.innerHTML = `
+          <div class="cert-modal-content">
+            <div class="flex justify-between items-center mb-4">
+              <p class="text-purple-400 font-semibold">${cert.issuer}</p>
+              <p class="text-slate-300">${cert.date}</p>
+            </div>
+            
+            <p class="mb-4">${cert.description}</p>
+            
+            <h4 class="text-lg font-semibold text-white">Skills & Technologies</h4>
+            <div class="flex flex-wrap gap-2 mb-4">
+              ${cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+            </div>
+            
+            <h4 class="text-lg font-semibold text-white">Key Highlights</h4>
+            <ul class="mb-4">
+              ${cert.highlights.map(highlight => `<li class="flex items-start"><i class="fa-solid fa-check text-purple-400 mr-2 mt-1"></i>${highlight}</li>`).join('')}
+            </ul>
+            
+            <div class="text-center mt-6">
+              <a href="${cert.credentialUrl}" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-violet-500 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 hover:opacity-90">
+                <i class="fa-solid fa-external-link-alt mr-2"></i>View Official Credential
+              </a>
+            </div>
+          </div>
+        `;
+
+        certModal.classList.remove('hidden');
+      }
+    });
 
     /* Respect reduce-motion */
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
